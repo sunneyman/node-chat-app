@@ -28,6 +28,5 @@ describe('generateLocationMessage', () => {
         expect(locationMessage.url).toBe(url);
         expect(typeof locationMessage.createdAt).toBe('number');
         expect(locationMessage).toMatchObject({from, url});
-
     });
 });
