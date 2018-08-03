@@ -14,6 +14,16 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('New user connected');
 
+    socket.emit('newMessage', {
+        from: 'Jin',
+        text: 'Hey, what is going on there?',
+        createAt: 123
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log('createMessage', message);
+    });
+
     socket.on('disconnect', () => {
         console.log('User was disconnected');
     });
@@ -22,7 +32,3 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log(`Started on port ${port}`);
 });
-// module.exports.app = app;
-
-// console.log(__dirname + '/../public');
-// console.log(publicPath);
